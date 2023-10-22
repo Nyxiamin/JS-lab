@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal JavaScript Example</title>
+</head>
+<body>
+    <script>
+        var userInput = prompt("How many courses did you finish?", "0");
+        var numOfCourses = parseInt(userInput);
+        var courseMarks = [];
+
+        if (isNaN(numOfCourses)) {
+            document.write('<p>Invalid Input<\/p>');
+            throw new Error('Invalid Input!');
+        } else {
+            for (var i = 1; i <= numOfCourses; i++) {
+                var mark = parseFloat(prompt("Enter your mark for course " + i, "0"));
+                courseMarks.push(mark);
+            }
+
+            for (var j = 0; j < courseMarks.length; j++) {
+                document.write('<p>' + courseMarks[j] + '<\/p>');
+            }
+
+            var totalMarks = 0;
+            for (var j = 0; j < courseMarks.length; j++) {
+                totalMarks += courseMarks[j];
+            }
+
+            var average = totalMarks / numOfCourses;
+
+            document.write('<p>Your final average is ' + average.toFixed(2) + '.');
+            document.write('Your grade is ');
+            
+            if (average >= 90 && average <= 100) {
+                document.write('A+<\/p>');
+            } else if (average >= 80 && average <= 89) {
+                document.write('B<\/p>');
+            } else if (average >= 70 && average <= 79) {
+                document.write('C<\/p>');
+            } else if (average >= 60 && average <= 69) {
+                document.write('D<\/p>');
+            } else if (average < 60) {
+                document.write('F<\/p>');
+            } else {
+                document.write('Sorry, all the marks have to be from minimum 0 to maximum 100!<\/p>');
+            }
+        }
+    </script>
+</body>
+</html>
